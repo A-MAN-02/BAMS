@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacture</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Fraunces:opsz,wght@9..144,300;9..144,700&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+    <header class="navbar" id="navbar">
+        <div class="container navbar__container">
+
+            <!-- Logo -->
+            <a href="#home" class="navbar__logo">
+                <img src="./assets/logo.png" alt="Manufacture Logo">
+            </a>
+
+            <!-- Single Responsive Navigation -->
+            <nav class="navbar__menu" id="navMenu" aria-label="Main Navigation">
+                <ul class="navbar__list">
+                    <li class="navbar__item">
+                        <a href="#home" class="navbar__link navbar__link--active">Home</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="#capabilities" class="navbar__link">Capabilities</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="#industries" class="navbar__link">Industries</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="#projects" class="navbar__link">Models</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="#contact" class="navbar__link">Contact</a>
+                    </li>
+                    <!-- Mobile CTA inside list -->
+                    <li class="navbar__item navbar__item--mobile-only">
+                        <a href="#contact" class="navbar__btn navbar__btn--mobile">Work With Us</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Actions (Desktop CTA + Mobile Toggle) -->
+            <div class="navbar__actions">
+                <a href="#contact" class="navbar__btn navbar__btn--desktop">Work With Us</a>
+
+                <button
+                    class="navbar__toggle"
+                    id="menuBtn"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-wrapper" id="hero">
+        
+        <!-- Puraana Text (Pehle Dikhai dega) -->
+        <div class="hero-content old-text">
+            <h1>Precision Engineering</h1>
+            <p>Custom manufacturing tailored to your needs.</p>
+        </div>
+
+        <!-- Naya Text (Scroll karne par aayega) -->
+        <div class="hero-content new-text">
+            <h1>ELECTRONICS MANUFACTURING SERVICES</h1>
+            <p>From Prototype to Production</p>
+            <a href="#contact" class="navbar__btn">Work With Us</a>
+        </div>
+        
+        <!-- Background Layer -->
+        <div class="hero-bg" style="background-image: url('./assets/bg-image.jpg');"></div>
+        
+        <!-- Foreground Zoom Container -->
+        <div class="hero-front">
+            <video class="zoom-video" autoplay loop muted playsinline>
+                <source src="./assets/your-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         CAPABILITIES / CARDS SECTION
+    ========================== -->
+    <section class="capabilities" id="capabilities">
+    
+    <!-- Background Animated Icons / Glowing Shapes -->
+    <div class="bg-animated-icons">
+        <div class="float-icon icon-1">⚙️</div>
+        <div class="float-icon icon-2">⚡</div>
+        <div class="float-icon icon-3">🔍</div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Core Capabilities</h2>
+            <p>Advanced engineering solutions tailored for modern electronics production.</p>
+        </div>
+
+        <!-- 2x2 Grid Layout -->
+        <div class="cards-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card__icon">⚙️</div>
+                <h3>PCB Assembly</h3>
+                <p>SMT &bull; THT &bull; Fine Pitch</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card__icon">🚀</div>
+                <h3>NPI & Prototyping</h3>
+                <p>DFM &bull; Pilot Runs</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card__icon">📦</div>
+                <h3>Box Build & Int.</h3>
+                <p>PCBA &bull; Cable Assembly</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card__icon">🔍</div>
+                <h3>Test & Quality</h3>
+                <p>AOI &bull; X-Ray &bull; FAI</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Next Section -->
+    <section class="demo-section">
+        <h2>Our Capabilities</h2>
+    </section>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

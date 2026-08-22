@@ -1,0 +1,496 @@
+
+/* =====================================
+   1. DESIGN SYSTEM / ROOT VARIABLES
+===================================== */
+:root {
+    --color-primary: #00d084;
+    --color-primary-hover: #00f5a0;
+    --color-secondary: #38bdf8;
+    --color-background: #111827;
+    --color-background-dark: #050816;
+    --color-navbar: #ffffff;
+    --color-surface: #162033;
+    --color-text-main: #0f172a;
+    --color-text-muted: #475569;
+    --color-text-light: #ffffff;
+    --color-border: #e2e8f0;
+
+    --font-tech: "Bruno Ace", sans-serif;
+    --font-heading: "Fraunces", serif;
+    --font-ui: "Plus Jakarta Sans", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    --font-weight-medium: 700;
+    --font-weight-bold: 900;
+    --font-size-sm: 16px;
+    --font-size-base: 18px;
+
+    --container-width: 1180px;
+    --navbar-height: 72px;
+    --radius-md: 10px;
+    --radius-sm: 6px;
+
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.4s ease;
+}
+
+/* =====================================
+   2. GLOBAL RESET & BASE STYLES
+===================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-text-light);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.container {
+    width: min(var(--container-width), calc(100% - 48px));
+    margin: 0 auto;
+}
+
+/* =====================================
+   3. NAVBAR
+===================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--color-navbar);
+    border-bottom: 1px solid var(--color-border);
+    transition: box-shadow var(--transition-base), background-color var(--transition-base);
+}
+
+.navbar--scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.navbar__container {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.navbar__logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.navbar__list {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.navbar__link {
+    position: relative;
+    padding: 8px 0;
+    font-family: var(--font-tech);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-muted);
+    transition: color var(--transition-base);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+    color: var(--color-text-main);
+}
+
+.navbar__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--transition-base);
+}
+
+.navbar__link:hover::after,
+.navbar__link--active::after {
+    transform: scaleX(1);
+}
+
+.navbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbar__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 20px;
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: #07140f;
+    font-family: var(--font-tech);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    transition: background-color var(--transition-base), transform var(--transition-base);
+}
+
+.navbar__btn:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+}
+
+.navbar__item--mobile-only {
+    display: none;
+}
+
+.navbar__toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+}
+
+.navbar__toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 5px auto;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-text-main);
+    transition: transform 0.35s ease, opacity 0.25s ease;
+}
+
+.navbar__toggle--active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__toggle--active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.navbar__toggle--active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+    .navbar__btn--desktop {
+        display: none;
+    }
+
+    .navbar__toggle {
+        display: block;
+    }
+
+    .navbar__item--mobile-only {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .navbar__btn--mobile {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar__menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-navbar);
+        border-bottom: 1px solid var(--color-border);
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: max-height var(--transition-slow), opacity var(--transition-base), padding var(--transition-base);
+    }
+
+    .navbar__menu--open {
+        max-height: 500px;
+        opacity: 1;
+        padding: 16px 24px 24px;
+        pointer-events: auto;
+    }
+
+    .navbar__list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .navbar__link {
+        display: block;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .navbar__link::after {
+        display: none;
+    }
+}
+
+/* =====================================
+   4. HERO SECTION STYLES
+===================================== */
+.hero-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background-dark);
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Foreground Zoom Container */
+.hero-front {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Video ko dark karne ke liye overlay aur filter */
+.hero-front::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45); /* Yahan 0.45 opacity se video dark ho jayegi (apne hisaab se kam/zyada kar sakte hain) */
+    z-index: 3; /* Video ke upar aur text ke niche rahega */
+    pointer-events: none; /* Taaki mouse clicks mein koi rukawat na aaye */
+}
+
+.zoom-video {
+    width: 400px;
+    height: auto;
+    border-radius: 12px;
+    will-change: transform;
+    filter: brightness(0.7) contrast(1.1); /* Video ki apni brightness aur contrast adjust karne ke liye */
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+    color: var(--color-text-light);
+    width: 100%;
+}
+
+.hero-content h1 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+}
+
+.old-text h1 {
+    font-size: 4rem;
+}
+
+.new-text {
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.new-text h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.new-text p {
+    font-size: 1.2rem;
+    color: var(--color-border);
+}
+
+
+/* =====================================
+   5. CAPABILITIES / CARDS SECTION STYLES
+===================================== */
+/* =========================================
+   1. Section & Background Setup
+   ========================================= */
+.capabilities {
+    position: relative; /* Background elements ko contain karne ke liye */
+    overflow: hidden; /* Bahar nikalne wale elements ko hide karne ke liye */
+    background-color: #0b1120; /* Deep modern dark color */
+    color: #ffffff;
+    padding: 80px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    position: relative;
+    z-index: 10; /* Text aur cards hamesha background icons ke upar rahenge */
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #00f2fe, #4facfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Text ko gradient color deta hai */
+}
+
+/* =========================================
+   2. Modern Glassmorphism Cards
+   ========================================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05); /* Transparent white */
+    backdrop-filter: blur(12px); /* Glass blur effect */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.4s ease; /* Smooth hover transition */
+    cursor: pointer;
+}
+
+.card__icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    transition: transform 0.4s ease;
+}
+
+/* Hover Effect on Cards */
+.card:hover {
+    transform: translateY(-10px); /* Card thoda upar uthega */
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(79, 172, 254, 0.5); /* Tech blue border on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(79, 172, 254, 0.2); /* Neon glow shadow */
+}
+
+.card:hover .card__icon {
+    transform: scale(1.2) rotate(5deg); /* Icon thoda bada aur tilt hoga */
+}
+
+/* =========================================
+   3. Animated Background Icons & Orbs
+   ========================================= */
+.bg-animated-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Cards ke peeche rahega */
+    pointer-events: none; /* Mouse clicks ko block nahi karega */
+}
+
+/* Glowing Orbs */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+}
+
+.orb-1 {
+    width: 300px;
+    height: 300px;
+    background: #4facfe;
+    top: -50px;
+    left: -100px;
+    animation: floatOrb 10s infinite alternate ease-in-out;
+}
+
+.orb-2 {
+    width: 250px;
+    height: 250px;
+    background: #00f2fe;
+    bottom: -50px;
+    right: -50px;
+    animation: floatOrb 12s infinite alternate-reverse ease-in-out;
+}
+
+/* Floating Icons */
+.float-icon {
+    position: absolute;
+    font-size: 4rem;
+    opacity: 0.1; /* Bahut light dikhenge taaki disturb na karein */
+}
+
+.icon-1 { top: 20%; left: 10%; animation: floatItem 8s infinite alternate ease-in-out; }
+.icon-2 { top: 60%; right: 15%; animation: floatItem 12s infinite alternate ease-in-out; }
+.icon-3 { bottom: 10%; left: 20%; animation: floatItem 10s infinite alternate ease-in-out; }
+
+/* Keyframe Animations */
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.2); }
+}
+
+@keyframes floatItem {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-30px) rotate(20deg); }
+}
