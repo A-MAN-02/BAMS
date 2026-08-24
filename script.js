@@ -47,21 +47,45 @@ window.addEventListener("resize", () => {
     }
 });
 
-// Efficient Scroll Handling for Navbar Shadow
-let isScrolling = false;
-window.addEventListener("scroll", () => {
-    if (!isScrolling) {
-        window.requestAnimationFrame(() => {
-            if (window.scrollY > 10) {
-                navbar.classList.add("navbar--scrolled");
-            } else {
-                navbar.classList.remove("navbar--scrolled");
-            }
-            isScrolling = false;
-        });
-        isScrolling = true;
+/* =====================================
+   NAVBAR SCROLL EFFECT
+===================================== */
+
+/* =====================================
+   NAVBAR SCROLL EFFECT (Updated)
+===================================== */
+let lastScrollPosition = 0; // Pichla scroll position track karne ke liye
+
+const handleNavbarScroll = () => {
+    let currentScrollPosition = window.scrollY;
+
+    // --- 1. Background Blur & Shadow Logic (Aapka purana code) ---
+    if (currentScrollPosition > 20) {
+        navbar.classList.add("navbar--scrolled");
+    } else {
+        navbar.classList.remove("navbar--scrolled");
     }
-}, { passive: true });
+
+    // --- 2. Hide / Show Navbar Logic (Naya code) ---
+    // Agar hum niche scroll kar rahe hain (current > last) aur top se 100px niche hain
+    if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
+        navbar.classList.add("navbar--hidden"); // Navbar ko hide karo
+    } 
+    // Agar hum upar scroll kar rahe hain (current < last)
+    else {
+        navbar.classList.remove("navbar--hidden"); // Navbar ko show karo
+    }
+
+    // Current position ko agle check ke liye save kar lo
+    lastScrollPosition = currentScrollPosition;
+};
+
+window.addEventListener("scroll", handleNavbarScroll, {
+    passive: true
+});
+
+// Check initial page position
+handleNavbarScroll();
 
 /* =====================================
    GSAP HERO ANIMATION
@@ -85,6 +109,13 @@ heroTimeline
         ease: "none",
         duration: 1
     }, 0) 
+
+    // NAYA STEP: Background image ko scroll ke sath blur karna
+    .to(".hero-bg", {
+        filter: "blur(15px)", /* Aap 15px ko kam ya zyada kar sakte hain apne hisaab se */
+        ease: "none",
+        duration: 1
+    }, 0) /* '0' ka matlab hai ye video zoom ke sath hi start hoga */
     
     // Step 2: Old text fades out early in the scroll
     .to(".old-text", {

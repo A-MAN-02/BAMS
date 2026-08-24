@@ -1,19 +1,19 @@
-
 /* =====================================
    1. DESIGN SYSTEM / ROOT VARIABLES
 ===================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
-    --color-primary: #00d084;
-    --color-primary-hover: #00f5a0;
-    --color-secondary: #38bdf8;
-    --color-background: #111827;
-    --color-background-dark: #050816;
+    --color-primary: #2F80ED;
+    --color-primary-hover: #1D5FBF;
+    --color-secondary: #60A5FA;
+    --color-background: #F6F8FC;
+    --color-background-dark: #0B2545;
     --color-navbar: #ffffff;
-    --color-surface: #162033;
-    --color-text-main: #0f172a;
-    --color-text-muted: #475569;
+    --color-surface: #ffffff;
+    --color-text-main: #0B1F3A;
+    --color-text-muted: #5B6B82;
     --color-text-light: #ffffff;
-    --color-border: #e2e8f0;
+    --color-border: #E3EAF3;
 
     --font-tech: "Bruno Ace", sans-serif;
     --font-heading: "Fraunces", serif;
@@ -30,7 +30,7 @@
     --radius-md: 10px;
     --radius-sm: 6px;
 
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 24px rgba(11, 31, 58, 0.08);
     --transition-base: 0.3s ease;
     --transition-slow: 0.4s ease;
 }
@@ -51,7 +51,7 @@ html {
 body {
     font-family: var(--font-body);
     background-color: var(--color-background);
-    color: var(--color-text-light);
+    color: var(--color-text-main);
     overflow-x: hidden;
 }
 
@@ -71,29 +71,39 @@ button {
     cursor: pointer;
 }
 
-.container {
-    width: min(var(--container-width), calc(100% - 48px));
-    margin: 0 auto;
-}
+
 
 /* =====================================
    3. NAVBAR
 ===================================== */
+/* 1. Existing .navbar mein sirf transition property update karein */
 .navbar {
-    position: sticky;
+    position: sticky; /* Ya fixed use karein agar sticky behavior theek se kaam na kare */
     top: 0;
     z-index: 1000;
     background-color: var(--color-navbar);
     border-bottom: 1px solid var(--color-border);
-    transition: box-shadow var(--transition-base), background-color var(--transition-base);
+    /* 👇 NAYA: transform ko transition mein add kiya taki hide/show smooth ho */
+    transition: box-shadow var(--transition-base), background-color var(--transition-base), transform 0.3s ease-in-out;
+}
+
+/* 2. Nayi class add karein Navbar ko chhupane ke liye */
+.navbar--hidden {
+    transform: translateY(-100%);
 }
 
 .navbar--scrolled {
-    box-shadow: var(--shadow-md);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .navbar__container {
     height: var(--navbar-height);
+    width: 95vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -101,9 +111,11 @@ button {
 }
 
 .navbar__logo img {
-    height: 40px;
+    margin-left: 3vw;
+    height: 3.5rem;
     width: auto;
     display: block;
+    
 }
 
 .navbar__list {
@@ -115,9 +127,12 @@ button {
 .navbar__link {
     position: relative;
     padding: 8px 0;
-    font-family: var(--font-tech);
+    font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
     font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
+    font-style: italic;
+    /* font-weight: var(--font-weight-medium); */
     color: var(--color-text-muted);
     transition: color var(--transition-base);
 }
@@ -158,10 +173,12 @@ button {
     padding: 11px 20px;
     border-radius: var(--radius-md);
     background: var(--color-primary);
-    color: #07140f;
-    font-family: var(--font-tech);
+    color: var(--color-text-light);
+    font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
     font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
+    /* font-weight: var(--font-weight-bold); */
     transition: background-color var(--transition-base), transform var(--transition-base);
 }
 
@@ -285,6 +302,7 @@ button {
     background-position: center;
     opacity: 1;
     z-index: 1;
+    will-change: filter; /* Isse browser ko pehle se pata chal jayega ki blur animate hone wala hai */
 }
 
 /* Foreground Zoom Container */
@@ -306,17 +324,18 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.45); /* Yahan 0.45 opacity se video dark ho jayegi (apne hisaab se kam/zyada kar sakte hain) */
+    background-color: rgba(0, 0, 0, 0.28); /* Kam kiya taaki hero zyada dark na lage, text abhi bhi readable rahega */
     z-index: 3; /* Video ke upar aur text ke niche rahega */
     pointer-events: none; /* Taaki mouse clicks mein koi rukawat na aaye */
 }
 
 .zoom-video {
-    width: 400px;
+    width: 480px;
     height: auto;
-    border-radius: 12px;
+    border-radius: 16px;
     will-change: transform;
-    filter: brightness(0.7) contrast(1.1); /* Video ki apni brightness aur contrast adjust karne ke liye */
+    filter: brightness(0.9) contrast(1.05); /* Video ki apni brightness aur contrast adjust karne ke liye */
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28); /* Panel ko clearly defined banata hai background se */
 }
 
 .hero-content {
@@ -330,13 +349,24 @@ button {
     width: 100%;
 }
 
-.hero-content h1 {
-    font-family: var(--font-heading);
+.hero-content h1 {font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
     color: var(--color-primary);
 }
 
 .old-text h1 {
-    font-size: 4rem;
+    font-size: 2.75rem;
+    max-width: 360px;
+    margin: 0 auto 14px;
+    line-height: 1.25;
+}
+
+.old-text p {
+    font-size: 1.05rem;
+    max-width: 300px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.88);
 }
 
 .new-text {
@@ -368,8 +398,8 @@ button {
 .capabilities {
     position: relative; /* Background elements ko contain karne ke liye */
     overflow: hidden; /* Bahar nikalne wale elements ko hide karne ke liye */
-    background-color: #0b1120; /* Deep modern dark color */
-    color: #ffffff;
+    background-color: #F6F8FC; /* Premium light neutral */
+    color: var(--color-text-main);
     padding: 80px 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -388,9 +418,15 @@ button {
 
 .section-header h2 {
     font-size: 2.5rem;
-    background: linear-gradient(90deg, #00f2fe, #4facfe);
+    background: linear-gradient(90deg, #0B2545, #2F80ED);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; /* Text ko gradient color deta hai */
+}
+
+.section-header p {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    margin-top: 10px;
 }
 
 /* =========================================
@@ -398,40 +434,60 @@ button {
    ========================================= */
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.05); /* Transparent white */
+    background: #FFFFFF; /* Clean premium surface */
     backdrop-filter: blur(12px); /* Glass blur effect */
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(11, 31, 58, 0.08);
     border-radius: 16px;
     padding: 30px;
     text-align: center;
+    box-shadow: var(--shadow-md); /* Resting elevation so it doesn't look flat */
     transition: all 0.4s ease; /* Smooth hover transition */
     cursor: pointer;
 }
 
 .card__icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    display: inline-block;
-    transition: transform 0.4s ease;
+    font-size: 2.1rem;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(47, 128, 237, 0.10), rgba(96, 165, 250, 0.12));
+    transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    color: var(--color-text-main);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
 }
 
 /* Hover Effect on Cards */
 .card:hover {
     transform: translateY(-10px); /* Card thoda upar uthega */
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(79, 172, 254, 0.5); /* Tech blue border on hover */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 
-                0 0 20px rgba(79, 172, 254, 0.2); /* Neon glow shadow */
+    background: rgba(47, 128, 237, 0.04);
+    border-color: rgba(47, 128, 237, 0.4); /* Electric blue border on hover */
+    box-shadow: 0 15px 30px rgba(11, 31, 58, 0.12), 
+                0 0 20px rgba(47, 128, 237, 0.18); /* Soft premium glow shadow */
 }
 
 .card:hover .card__icon {
-    transform: scale(1.2) rotate(5deg); /* Icon thoda bada aur tilt hoga */
+    transform: scale(1.12) rotate(5deg); /* Icon thoda bada aur tilt hoga */
+    background: linear-gradient(135deg, rgba(47, 128, 237, 0.18), rgba(96, 165, 250, 0.20));
 }
 
 /* =========================================
@@ -458,7 +514,7 @@ button {
 .orb-1 {
     width: 300px;
     height: 300px;
-    background: #4facfe;
+    background: #2F80ED;
     top: -50px;
     left: -100px;
     animation: floatOrb 10s infinite alternate ease-in-out;
@@ -467,7 +523,7 @@ button {
 .orb-2 {
     width: 250px;
     height: 250px;
-    background: #00f2fe;
+    background: #60A5FA;
     bottom: -50px;
     right: -50px;
     animation: floatOrb 12s infinite alternate-reverse ease-in-out;
@@ -493,4 +549,71 @@ button {
 @keyframes floatItem {
     0% { transform: translateY(0) rotate(0deg); }
     100% { transform: translateY(-30px) rotate(20deg); }
+}
+
+
+/* =====================================
+   6. TECHNICAL STATS SECTION
+===================================== */
+.technical-stats {
+    background: linear-gradient(135deg, #F6F8FC 0%, #FFFFFF 100%);
+    padding: 60px 20px;
+    border-top: 1px solid rgba(11, 31, 58, 0.06);
+    border-bottom: 1px solid rgba(11, 31, 58, 0.06);
+}
+
+.stats-grid {
+    display: grid;
+    /* Yeh automatically ek line mein 4 items set karega desktop par */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 30px 20px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid rgba(11, 31, 58, 0.08);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base), background var(--transition-base), box-shadow var(--transition-base);
+}
+
+.stat-item:hover {
+    transform: translateY(-8px);
+    background: rgba(47, 128, 237, 0.04);
+    border-color: rgba(47, 128, 237, 0.35); /* Hover par electric blue border */
+    box-shadow: 0 20px 40px rgba(11, 31, 58, 0.12);
+}
+
+.stat-number {
+    font-family: var(--font-tech); /* Yeh Bruno Ace font use karega */
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    /* Numbers ko green-to-blue gradient effect diya hai */
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.stat-unit {
+    font-size: 1.5rem;
+    margin-left: 5px;
+    -webkit-text-fill-color: var(--color-text-muted); /* Unit ko gray color diya hai */
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.stat-disclaimer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
 }
