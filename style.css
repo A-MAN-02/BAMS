@@ -530,7 +530,7 @@ button {
 }
 
 .card h3 {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--color-text-main);
     margin-bottom: 10px;
@@ -540,7 +540,7 @@ button {
 .card p {
     font-size: 0.95rem;
     line-height: 1.65;
-    color: var(--color-text-muted);
+    color: var(--color-text-main);
 }
 
 /* Hover Effect on Cards */
@@ -602,12 +602,12 @@ button {
 .float-icon {
     position: absolute;
     font-size: 4rem;
-    opacity: 0.1; /* Bahut light dikhenge taaki disturb na karein */
+    opacity: 5; /* Bahut light dikhenge taaki disturb na karein */
 }
 
-.icon-1 { top: 20%; left: 10%; animation: floatItem 8s infinite alternate ease-in-out; }
-.icon-2 { top: 60%; right: 15%; animation: floatItem 12s infinite alternate ease-in-out; }
-.icon-3 { bottom: 10%; left: 20%; animation: floatItem 10s infinite alternate ease-in-out; }
+.icon-1 { top: 10%; left: 10%; animation: floatItem 8s infinite alternate ease-in-out; }
+.icon-2 { top: 10%; right: 15%; animation: floatItem 12s infinite alternate ease-in-out; }
+.icon-3 { bottom: 0%; left: 48%; animation: floatItem 10s infinite alternate ease-in-out; }
 
 /* Keyframe Animations */
 @keyframes floatOrb {

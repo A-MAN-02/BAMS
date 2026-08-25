@@ -12,7 +12,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Fraunces:opsz,wght@9..144,300;9..144,700&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Fraunces:opsz,wght@9..144,300;9..144,700&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -57,11 +59,7 @@
             <div class="navbar__actions">
                 <a href="#contact" class="navbar__btn navbar__btn--desktop">Work With Us</a>
 
-                <button
-                    class="navbar__toggle"
-                    id="menuBtn"
-                    aria-label="Toggle navigation menu"
-                    aria-expanded="false"
+                <button class="navbar__toggle" id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false"
                     aria-controls="navMenu">
                     <span></span>
                     <span></span>
@@ -74,7 +72,7 @@
 
     <!-- Hero Section -->
     <section class="hero-wrapper" id="hero">
-        
+
         <!-- Puraana Text (Pehle Dikhai dega) -->
         <div class="hero-content old-text">
             <h1>Precision Engineering</h1>
@@ -87,10 +85,10 @@
             <p>From Prototype to Production</p>
             <a href="#contact" class="navbar__btn">Work With Us</a>
         </div>
-        
+
         <!-- Background Layer -->
         <div class="hero-bg" style="background-image: url('./assets/bg-image.jpg');"></div>
-        
+
         <!-- Foreground Zoom Container -->
         <div class="hero-front">
             <video class="zoom-video" autoplay loop muted playsinline>
@@ -104,111 +102,117 @@
     <!-- =========================
          CAPABILITIES / CARDS SECTION
     ========================== -->
-    <section class="capabilities" id="capabilities">
-    
-    <!-- Background Animated Icons / Glowing Shapes -->
-    <div class="bg-animated-icons">
-        <div class="float-icon icon-1">⚙️</div>
-        <div class="float-icon icon-2">⚡</div>
-        <div class="float-icon icon-3">🔍</div>
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-    </div>
+    <section class="capabilities" id="capabilities"
+        style="background: linear-gradient(  to bottom right,  rgba(38, 125, 152, 0.6),  rgba(237, 237, 237, 1));">
 
-    <div class="container">
-        <div class="section-header">
-            <h2>Our Core Capabilities</h2>
-            <p>Advanced engineering solutions tailored for modern electronics production.</p>
+        <!-- Background Animated Icons / Glowing Shapes -->
+        <div class="bg-animated-icons">
+            <div class="float-icon icon-1">⚙️</div>
+            <div class="float-icon icon-2">⚡</div>
+            <div class="float-icon icon-3">🔍</div>
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
         </div>
 
-        <!-- 2x2 Grid Layout -->
-        <div class="cards-grid">
-    
-    <!-- Card 1 -->
-    <div class="card">
-        <div class="card__icon">⚙️</div>
-        <h3>PCB Assembly</h3>
-        <p>SMT &bull; THT &bull; Mixed Technology &bull; Fine Pitch &bull; BGA</p>
-    </div>
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Capabilities</h2>
+                <p>Advanced engineering solutions tailored for modern electronics production.</p>
+            </div>
 
-    <!-- Card 2 -->
-    <div class="card">
-        <div class="card__icon">🚀</div>
-        <h3>NPI & Prototyping</h3>
-        <p>DFM &bull; Engineering Builds &bull; Pilot Production &bull; Ramp</p>
-    </div>
+            <!-- 2x2 Grid Layout -->
+            <div class="cards-grid">
 
-    <!-- Card 3 -->
-    <div class="card">
-        <div class="card__icon">📦</div>
-        <h3>Box Build & Integration</h3>
-        <p>PCBA &bull; Mechanical &bull; Cable &bull; System Integration</p>
-    </div>
+                <!-- Card 1 -->
+                <div class="card"
+                    style="background:linear-gradient(to bottom,rgba(255, 255, 255, 0) 20%,rgba(255, 255, 255, 0.45) 50%,rgba(255, 255, 255, 0.95) 100%),url('./assets/PCB.jpg') center/cover no-repeat;">
+                    <div class="card__icon">⚙️</div>
+                    <h3>PCB Assembly</h3>
+                    <p>SMT &bull; THT &bull; Mixed Technology &bull; Fine Pitch &bull; BGA</p>
+                </div>
 
-    <!-- Card 4 -->
-    <div class="card">
-        <div class="card__icon">🔍</div>
-        <h3>Test & Quality</h3>
-        <p>AOI &bull; X-Ray &bull; ICT &bull; FCT &bull; Burn-In</p>
-    </div>
+                <!-- Card 2 -->
+                <div class="card"
+                    style="background:linear-gradient(to bottom,rgba(255, 255, 255, 0) 20%,rgba(255, 255, 255, 0.45) 50%,rgba(255, 255, 255, 0.95) 100%),url('./assets/NPI.jpg') center/cover no-repeat;">
+                    <div class="card__icon">🚀</div>
+                    <h3>NPI & Prototyping</h3>
+                    <p>DFM &bull; Engineering Builds &bull; Pilot Production &bull; Ramp</p>
+                </div>
 
-    <!-- Card 5 (Updated) -->
-    <div class="card">
-        <div class="card__icon">🏭</div>
-        <h3>Turnkey Manufacturing</h3>
-        <p>BOM Procurement &bull; Build-to-Spec &bull; Traceability &bull; Logistics</p>
-    </div>
+                <!-- Card 3 -->
+                <div class="card"
+                    style="background:linear-gradient(to bottom,rgba(255, 255, 255, 0) 20%,rgba(255, 255, 255, 0.45) 50%,rgba(255, 255, 255, 0.95) 100%),url('./assets/box_.jpeg') center/cover no-repeat;">
+                    <div class="card__icon">📦</div>
+                    <h3>Box Build & Integration</h3>
+                    <p>PCBA &bull; Mechanical &bull; Cable &bull; System Integration</p>
+                </div>
 
-    <!-- Card 6 (Updated) -->
-    <div class="card">
-        <div class="card__icon">🔗</div>
-        <h3>Supply Chain & Component Management</h3>
-        <p>Sourcing &bull; Inventory &bull; Shortage Management &bull; Global Procurement</p>
-    </div>
+                <!-- Card 4 -->
+                <div class="card"
+                    style="background:linear-gradient(to bottom,rgba(255, 255, 255, 0) 20%,rgba(255, 255, 255, 0.45) 50%,rgba(255, 255, 255, 0.95) 100%),url('./assets/Test.jpg') center/cover no-repeat;">
+                    <div class="card__icon">🔍</div>
+                    <h3>Test & Quality</h3>
+                    <p>AOI &bull; X-Ray &bull; ICT &bull; FCT &bull; Burn-In</p>
+                </div>
 
-</div>
-    </div>
-</section>
+                <!-- Card 5 (Updated) -->
+                <div class="card" style="background:linear-gradient(to bottom,rgba(255, 255, 255, 0) 20%,rgba(255, 255, 255, 0.45) 50%,rgba(255, 255, 255, 0.95) 100%),url('./assets/Turnkey.jpg') center/cover no-repeat;">
+                    <div class="card__icon">🏭</div>
+                    <h3>Turnkey Manufacturing</h3>
+                    <p>BOM Procurement &bull; Build-to-Spec &bull; Traceability &bull; Logistics</p>
+                </div>
+
+                <!-- Card 6 (Updated) -->
+                <div class="card"
+                    style="background:linear-gradient(to bottom,rgba(255, 255, 255, 0) 20%,rgba(255, 255, 255, 0.45) 50%,rgba(255, 255, 255, 0.95) 100%),url('./assets/Supply.jpg') center/cover no-repeat;">
+                    <div class="card__icon">🔗</div>
+                    <h3>Supply Chain & Component Management</h3>
+                    <p>Sourcing &bull; Inventory &bull; Shortage Management &bull; Global Procurement</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- =========================
      SECTION 3: TECHNICAL HIGHLIGHTS
 ========================== -->
-<section class="technical-stats" id="tech-specs">
-    <div class="container">
-        <div class="stats-grid">
-            
-            <!-- Stat 1 -->
-            <div class="stat-item">
-                <h3 class="stat-number">95K<span class="stat-unit">+</span></h3>
-                <p class="stat-label">CPH SMT Capacity</p>
-            </div>
-            
-            <!-- Stat 2 -->
-            <div class="stat-item">
-                <h3 class="stat-number">24<span class="stat-unit">+</span></h3>
-                <p class="stat-label">Layer Boards</p>
-            </div>
-            
-            <!-- Stat 3 -->
-            <div class="stat-item">
-                <h3 class="stat-number">0.15<span class="stat-unit">mm</span></h3>
-                <p class="stat-label">Fine-Pitch ICs</p>
-            </div>
-            
-            <!-- Stat 4 -->
-            <div class="stat-item">
-                <h3 class="stat-number">24-48<span class="stat-unit">hrs</span></h3>
-                <p class="stat-label">Quick-Turn Prototypes</p>
+    <section class="technical-stats" id="tech-specs">
+        <div class="container">
+            <div class="stats-grid">
+
+                <!-- Stat 1 -->
+                <div class="stat-item">
+                    <h3 class="stat-number">95K<span class="stat-unit">+</span></h3>
+                    <p class="stat-label">CPH SMT Capacity</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="stat-item">
+                    <h3 class="stat-number">24<span class="stat-unit">+</span></h3>
+                    <p class="stat-label">Layer Boards</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="stat-item">
+                    <h3 class="stat-number">0.15<span class="stat-unit">mm</span></h3>
+                    <p class="stat-label">Fine-Pitch ICs</p>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="stat-item">
+                    <h3 class="stat-number">24-48<span class="stat-unit">hrs</span></h3>
+                    <p class="stat-label">Quick-Turn Prototypes</p>
+                </div>
+
             </div>
 
+            <!-- Disclaimer text niche -->
+            <div class="stat-disclaimer">
+                <p>* Advanced 01005 / 0201 component handling & BGA / QFN / CSP support.</p>
+            </div>
         </div>
-        
-        <!-- Disclaimer text niche -->
-        <div class="stat-disclaimer">
-            <p>* Advanced 01005 / 0201 component handling & BGA / QFN / CSP support.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -216,4 +220,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
