@@ -88,6 +88,31 @@ window.addEventListener("scroll", handleNavbarScroll, {
 handleNavbarScroll();
 
 /* =====================================
+   BAMS INTRO — SCROLL REVEAL
+===================================== */
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealTargets = document.querySelectorAll(".intro__reveal, .quality__reveal");
+
+if (revealTargets.length && !prefersReducedMotion) {
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    // Small stagger so each block eases in one after another
+                    setTimeout(() => {
+                        entry.target.classList.add("is-visible");
+                    }, i * 90);
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.2, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    revealTargets.forEach((el) => revealObserver.observe(el));
+}
+
+/* =====================================
    GSAP HERO ANIMATION
 ===================================== */
 gsap.registerPlugin(ScrollTrigger);
@@ -131,4 +156,3 @@ heroTimeline
         { autoAlpha: 1, y: 0, ease: "power2.out", duration: 0.5 }, 
         0.5 
     );
-    
