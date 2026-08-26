@@ -29,7 +29,7 @@ const Footer = () => {
     <footer className="footer" id="contact">
       <div className="footer__main">
         <div className="footer__brand">
-          <img src="/assets/logo.png" alt="BAMS Logo" className="footer__logo" />
+          <img src="./assets/logo.png" alt="BAMS Logo" className="footer__logo" />
           <p>
             End-to-end Electronic Design and Manufacturing — from PCB design
             and fine-pitch SMT assembly to testing, inspection, and volume

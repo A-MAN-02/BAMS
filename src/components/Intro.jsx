@@ -65,7 +65,7 @@ const Intro = () => {
           {/* Facility / Machine Photo */}
           <div className="intro__media intro__reveal">
             <img
-              src="/assets/intro-facility.jpeg"
+              src="./assets/intro-facility.jpeg"
               alt="BAMS SMT production line"
               className="intro__image"
             />

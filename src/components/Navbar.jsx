@@ -56,7 +56,7 @@ const Navbar = () => {
           className="navbar__logo"
           onClick={(e) => handleAnchorClick(e, "#home")}
         >
-          <img src="/assets/logo.png" alt="Manufacture Logo" />
+          <img src="./assets/logo.png" alt="Manufacture Logo" />
         </a>
 
         {/* Single Responsive Navigation */}

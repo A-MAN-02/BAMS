@@ -68,7 +68,7 @@ const Quality = () => {
                 <div className="quality__badge" key={cert.title}>
                   <div className="quality__seal">
                     <img
-                      src={`/assets/${cert.image}`}
+                      src={`./assets/${cert.image}`}
                       alt={cert.title}
                       className="cert-img"
                     />

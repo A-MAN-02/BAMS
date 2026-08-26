@@ -86,13 +86,13 @@ const Hero = () => {
       {/* Background layer */}
       <div
         className="hero-bg"
-        style={{ backgroundImage: "url('/assets/bg-image.jpg')" }}
+        style={{ backgroundImage: "url('./assets/bg-image.jpg')" }}
       ></div>
 
       {/* Foreground zoom video */}
       <div className="hero-front">
         <video className="zoom-video" autoPlay loop muted playsInline>
-          <source src="/assets/your-video.mp4" type="video/mp4" />
+          <source src="./assets/your-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>

@@ -38,7 +38,7 @@ const CARDS = [
 ];
 
 const cardBackground = (image) =>
-  `linear-gradient(to bottom, rgba(255,255,255,0) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.95) 100%), url('/assets/${image}') center/cover no-repeat`;
+  `linear-gradient(to bottom, rgba(255,255,255,0) 20%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.95) 100%), url('./assets/${image}') center/cover no-repeat`;
 
 const Capabilities = () => {
   return (

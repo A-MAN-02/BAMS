@@ -34,7 +34,7 @@ manufacture-react/
 
 ## How to run
 
-1. **Copy your image/video assets** into `public/assets/` (same filenames
+1. **Copy your image/video assets** into `public./assets/` (same filenames
    used in your original HTML — logo.png, bg-image.jpg, your-video.mp4, etc.).
 2. Install dependencies:
    ```bash
@@ -65,7 +65,7 @@ manufacture-react/
 - The GSAP hero pin/zoom/blur timeline is set up inside `Hero.jsx` with
   `gsap.context()` so it's properly created and cleaned up as the component
   mounts/unmounts (important for React StrictMode / hot reload).
-- Asset paths were changed from `./assets/...` to `/assets/...` because
+- Asset paths were changed from `../assets/...` to `./assets/...` because
   Vite serves the `public/` folder from the site root.
 - `style.css` was copied over as-is into `src/index.css` — no visual
   changes, just imported once in `main.jsx` so it applies globally.
