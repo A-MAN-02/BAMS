@@ -3,14 +3,14 @@
 ===================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
-    --color-primary: #2F80ED;
-    --color-primary-hover: #1D5FBF;
-    --color-secondary: #60A5FA;
+    --color-primary: #0A6CBE;
+    --color-primary-hover: #084C87;
+    --color-secondary: #1690C0;
     --color-background: #F6F8FC;
-    --color-background-dark: #0B2545;
+    --color-background-dark: #01172F;
     --color-navbar: #ffffff;
     --color-surface: #ffffff;
-    --color-text-main: #0B1F3A;
+    --color-text-main: #01172F;
     --color-text-muted: #5B6B82;
     --color-text-light: #ffffff;
     --color-border: #E3EAF3;
@@ -430,11 +430,11 @@ button {
     padding: 14px 30px;
     font-size: 1rem;
     letter-spacing: 0.5px;
-    box-shadow: 0 10px 30px rgba(47, 128, 237, 0.45);
+    box-shadow: 0 10px 30px rgba(10, 108, 190, 0.45);
 }
 
 .new-text .navbar__btn:hover {
-    box-shadow: 0 14px 36px rgba(47, 128, 237, 0.6);
+    box-shadow: 0 14px 36px rgba(10, 108, 190, 0.6);
 }
 
 
@@ -525,7 +525,7 @@ button {
 .intro__highlight {
     color: var(--color-text-main);
     font-weight: 600;
-    border-bottom: 1px solid rgba(47, 128, 237, 0.4);
+    border-bottom: 1px solid rgba(10, 108, 190, 0.4);
 }
 
 /* --- Facility / machine photo --- */
@@ -541,7 +541,7 @@ button {
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    background: linear-gradient(135deg, rgba(47, 128, 237, 0.1), rgba(11, 37, 69, 0.06));
+    background: linear-gradient(135deg, rgba(10, 108, 190, 0.1), rgba(11, 37, 69, 0.06));
     opacity: 0.8;
 }
 
@@ -576,7 +576,7 @@ button {
 
 .intro__pill:hover {
     border-color: var(--color-primary);
-    background: rgba(47, 128, 237, 0.06);
+    background: rgba(10, 108, 190, 0.06);
     color: var(--color-primary-hover);
     transform: translateY(-2px);
 }
@@ -597,7 +597,7 @@ button {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, rgba(47, 128, 237, 0.5), rgba(11, 31, 58, 0.08));
+    background: linear-gradient(90deg, rgba(10, 108, 190, 0.5), rgba(11, 31, 58, 0.08));
     z-index: 0;
 }
 
@@ -616,7 +616,7 @@ button {
     height: 11px;
     border-radius: 50%;
     background: var(--color-primary);
-    box-shadow: 0 0 0 5px rgba(47, 128, 237, 0.14);
+    box-shadow: 0 0 0 5px rgba(10, 108, 190, 0.14);
 }
 
 .intro__step-index {
@@ -686,7 +686,7 @@ button {
         right: auto;
         width: 1px;
         height: 100%;
-        background: linear-gradient(180deg, rgba(47, 128, 237, 0.5), rgba(11, 31, 58, 0.08));
+        background: linear-gradient(180deg, rgba(10, 108, 190, 0.5), rgba(11, 31, 58, 0.08));
     }
 
     .intro__step {
@@ -729,7 +729,7 @@ button {
 
 .section-header h2 {
     font-size: 2.5rem;
-    background: linear-gradient(90deg, #0B2545, #2F80ED);
+    background: linear-gradient(90deg, #01172F, #0A6CBE);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; /* Text ko gradient color deta hai */
 }
@@ -791,8 +791,8 @@ button {
     align-items: center;
     justify-content: center;
     border-radius: 18px;
-    background: linear-gradient(135deg, rgba(47, 128, 237, 0.10), rgba(96, 165, 250, 0.12));
-    box-shadow: inset 0 0 0 1px rgba(47, 128, 237, 0.10);
+    background: linear-gradient(135deg, rgba(10, 108, 190, 0.10), rgba(22, 144, 192, 0.12));
+    box-shadow: inset 0 0 0 1px rgba(10, 108, 190, 0.10);
     transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -814,17 +814,17 @@ button {
 /* Hover Effect on Cards */
 .card:hover {
     transform: translateY(-10px) scale(1.015); /* Card thoda upar uthega */
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(47, 128, 237, 0.035) 100%);
-    border-color: rgba(47, 128, 237, 0.4); /* Electric blue border on hover */
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(10, 108, 190, 0.035) 100%);
+    border-color: rgba(10, 108, 190, 0.4); /* Electric blue border on hover */
     box-shadow: 0 22px 40px rgba(11, 31, 58, 0.14),
-                0 0 0 1px rgba(47, 128, 237, 0.12),
-                0 0 24px rgba(47, 128, 237, 0.18); /* Soft premium glow shadow */
+                0 0 0 1px rgba(10, 108, 190, 0.12),
+                0 0 24px rgba(10, 108, 190, 0.18); /* Soft premium glow shadow */
 }
 
 .card:hover .card__icon {
     transform: scale(1.12) rotate(5deg); /* Icon thoda bada aur tilt hoga */
-    background: linear-gradient(135deg, rgba(47, 128, 237, 0.22), rgba(96, 165, 250, 0.24));
-    box-shadow: inset 0 0 0 1px rgba(47, 128, 237, 0.25), 0 6px 16px rgba(47, 128, 237, 0.2);
+    background: linear-gradient(135deg, rgba(10, 108, 190, 0.22), rgba(22, 144, 192, 0.24));
+    box-shadow: inset 0 0 0 1px rgba(10, 108, 190, 0.25), 0 6px 16px rgba(10, 108, 190, 0.2);
 }
 
 /* =========================================
@@ -851,7 +851,7 @@ button {
 .orb-1 {
     width: 300px;
     height: 300px;
-    background: #2F80ED;
+    background: #0A6CBE;
     top: -50px;
     left: -100px;
     animation: floatOrb 10s infinite alternate ease-in-out;
@@ -860,7 +860,7 @@ button {
 .orb-2 {
     width: 250px;
     height: 250px;
-    background: #60A5FA;
+    background: #1690C0;
     bottom: -50px;
     right: -50px;
     animation: floatOrb 12s infinite alternate-reverse ease-in-out;
@@ -918,8 +918,8 @@ button {
 
 .stat-item:hover {
     transform: translateY(-8px);
-    background: rgba(47, 128, 237, 0.04);
-    border-color: rgba(47, 128, 237, 0.35); /* Hover par electric blue border */
+    background: rgba(10, 108, 190, 0.04);
+    border-color: rgba(10, 108, 190, 0.35); /* Hover par electric blue border */
     box-shadow: 0 20px 40px rgba(11, 31, 58, 0.12);
 }
 
@@ -1110,8 +1110,8 @@ button {
 
 .quality__badge:hover {
     transform: translateY(-4px);
-    border-color: rgba(96, 165, 250, 0.4);
-    background: rgba(96, 165, 250, 0.06);
+    border-color: rgba(22, 144, 192, 0.4);
+    background: rgba(22, 144, 192, 0.06);
 }
 
 /* Add/Replace these classes to make the PNGs look premium */
@@ -1139,7 +1139,7 @@ button {
 
 .quality__badge:hover .cert-img {
     transform: scale(1.15) rotate(3deg); /* Interactive zoom and slight tilt */
-    filter: drop-shadow(0 8px 15px rgba(96, 165, 250, 0.6)); /* Premium glowing shadow */
+    filter: drop-shadow(0 8px 15px rgba(22, 144, 192, 0.6)); /* Premium glowing shadow */
 }
 
 .quality__seal-text {
@@ -1237,8 +1237,12 @@ button {
    8. FOOTER SECTION STYLES
 ===================================== */
 .footer {
-    background: var(--color-background);
-    border-top: 1px solid var(--color-border);
+    background: var(--color-background-dark);
+    background-image: url('./assets/footerBg-JpCEy_uZ.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     padding: 64px 20px 24px;
 }
 
@@ -1248,8 +1252,8 @@ button {
     display: flex;
     justify-content: space-between;
     gap: 60px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 44px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer__brand {
@@ -1260,11 +1264,12 @@ button {
     height: 38px;
     width: auto;
     margin-bottom: 18px;
+    filter: brightness(0) invert(1);
 }
 
 .footer__brand p {
     font-family: var(--font-body);
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.65);
     font-size: 14px;
     line-height: 1.7;
     margin-bottom: 22px;
@@ -1282,16 +1287,16 @@ button {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-main);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--color-text-light);
     font-size: 15px;
     transition: var(--transition-base);
 }
 
 .footer__socials a:hover {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
     color: #fff;
     transform: translateY(-3px);
 }
@@ -1299,14 +1304,12 @@ button {
 .footer__links {
     display: flex;
     gap: 64px;
-    flex: 1;
-    justify-content: flex-end;
 }
 
 .footer__link-group h4 {
-    font-family: var(--font-heading);
-    color: var(--color-text-main);
-    font-size: 17px;
+    font-family: var(--font-ui);
+    color: var(--color-text-light);
+    font-size: 16px;
     font-weight: 700;
     margin-bottom: 20px;
 }
@@ -1319,23 +1322,90 @@ button {
 
 .footer__link-group ul li a {
     font-family: var(--font-body);
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.65);
     font-size: 14px;
     transition: var(--transition-base);
     display: inline-block;
 }
 
 .footer__link-group ul li a:hover {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     transform: translateX(4px);
+}
+
+.footer__newsletter {
+    max-width: 380px;
+}
+
+.footer__newsletter h4 {
+    font-family: var(--font-ui);
+    color: var(--color-text-light);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.footer__newsletter p {
+    font-family: var(--font-body);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.footer__newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.footer__newsletter-form input {
+    flex: 1;
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+}
+
+.footer__newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer__newsletter-form input:focus {
+    border-color: var(--color-secondary);
+}
+
+.footer__newsletter-submit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--color-primary);
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.footer__newsletter-submit:hover {
+    background: var(--color-secondary);
+    color: #fff;
 }
 
 .footer__bottom {
     max-width: var(--container-width);
     margin: 22px auto 0;
-    text-align: center;
+    text-align: left;
     font-family: var(--font-body);
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.45);
     font-size: 13px;
 }
 
@@ -1346,12 +1416,23 @@ button {
 
     .footer__main {
         flex-direction: column;
-        gap: 36px;
+        gap: 40px;
     }
 
     .footer__links {
         flex-direction: column;
         gap: 30px;
-        justify-content: flex-start;
+    }
+
+    .footer__newsletter {
+        max-width: none;
+    }
+
+    .footer__newsletter-form {
+        flex-direction: column;
+    }
+
+    .footer__newsletter-submit {
+        justify-content: center;
     }
 }

@@ -1,28 +1,35 @@
+import { useState } from "react";
+
 const FOOTER_LINKS = {
-  Capabilities: [
-    { label: "PCB Design", href: "#capabilities" },
-    { label: "SMT Assembly", href: "#capabilities" },
-    { label: "Test & Inspection", href: "#capabilities" },
-    { label: "BGA Rework", href: "#capabilities" },
+  Explore: [
+    { label: "Capabilities", href: "#capabilities" },
+    { label: "Technical Stats", href: "#stats" },
+    { label: "Quality & Certifications", href: "#quality" },
+    { label: "Careers", href: "#" },
   ],
   Company: [
     { label: "About Us", href: "#about" },
-    { label: "Quality & Certifications", href: "#quality" },
-    { label: "Industries We Serve", href: "#about" },
-    { label: "Contact", href: "#contact" },
-  ],
-  Legal: [
+    { label: "Blog", href: "#" },
+    { label: "Contact Us", href: "#contact" },
     { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Compliance", href: "#" },
   ],
 };
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
   const handleAnchorClick = (e, href) => {
     if (!href.startsWith("#") || href === "#") return;
     e.preventDefault();
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    // Hook this up to your mailing list provider / backend endpoint
+    console.log("Subscribe:", email);
+    setEmail("");
   };
 
   return (
@@ -31,9 +38,8 @@ const Footer = () => {
         <div className="footer__brand">
           <img src="./assets/logo.png" alt="BAMS Logo" className="footer__logo" />
           <p>
-            End-to-end Electronic Design and Manufacturing — from PCB design
-            and fine-pitch SMT assembly to testing, inspection, and volume
-            production.
+            Crafting intelligent solutions that turn your engineering
+            ideas into reality — from PCB design to full-scale production.
           </p>
           <div className="footer__socials">
             <a href="#" aria-label="Twitter">𝕏</a>
@@ -61,10 +67,30 @@ const Footer = () => {
             </div>
           ))}
         </div>
+
+        <div className="footer__newsletter">
+          <h4>Stay up to date</h4>
+          <p>
+            Sign up to get the latest updates on our engineering services
+            and manufacturing capabilities.
+          </p>
+          <form className="footer__newsletter-form" onSubmit={handleSubscribe}>
+            <input
+              type="email"
+              required
+              placeholder="you@company.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button type="submit" className="footer__newsletter-submit">
+              Submit ↗
+            </button>
+          </form>
+        </div>
       </div>
 
       <div className="footer__bottom">
-        <p>&copy; {new Date().getFullYear()} BAMS — Bharyat Advanced Manufacturing Services. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} All rights reserved. Bharyat — Advanced Manufacturing Services.</p>
       </div>
     </footer>
   );
