@@ -44,7 +44,7 @@ const CARDS = [
     desc: "DFM, engineering builds, pilot production, ramp",
     hoverText: "From first prototype to production ramp, fast.",
     image: "NPI.jpg",
-    size: "bento--wide",
+    size: "bento--xl",
     theme: "bento--peach",
   },
 ];
