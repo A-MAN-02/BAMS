@@ -5,6 +5,7 @@ import Capabilities from "./components/Capabilities";
 import TechnicalStats from "./components/TechnicalStats";
 import Quality from "./components/Quality";
 import CompanyAlbum from "./components/CompanyAlbum";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <TechnicalStats />
       <CompanyAlbum/>
       <Quality />
+      <Contact/>
       <Footer />
     </>
   );

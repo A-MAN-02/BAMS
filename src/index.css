@@ -1436,3 +1436,606 @@ button {
         justify-content: center;
     }
 }
+/* =====================================
+   8. CONTACT SECTION
+===================================== */
+.contact {
+    position: relative;
+    background: var(--color-background);
+    padding: 60px 20px 70px;
+    overflow: hidden;
+}
+
+.contact__glow {
+    position: absolute;
+    bottom: -180px;
+    left: -160px;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    opacity: 0.08;
+    filter: blur(140px);
+}
+
+/* Floating background orbs — reuse the same "floatOrb" keyframe already
+   defined once (Capabilities section), just placed differently here. */
+.contact__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.contact__orb--1 {
+    width: 260px;
+    height: 260px;
+    background: var(--color-secondary);
+    top: -60px;
+    right: 6%;
+    animation: floatOrb 11s infinite alternate ease-in-out;
+}
+
+.contact__orb--2 {
+    width: 200px;
+    height: 200px;
+    background: var(--color-primary);
+    bottom: 10%;
+    right: 22%;
+    animation: floatOrb 14s infinite alternate-reverse ease-in-out;
+}
+
+/* --- Section-wide faint circuit texture --- */
+.contact__bg-circuit {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* --- Shared circuit-trace styling (used by both the section-wide texture
+   and the form panel's internal pattern) --- */
+.circuit__trace {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    opacity: 0.14;
+}
+
+.circuit__trace--flow {
+    stroke: var(--color-secondary);
+    stroke-dasharray: 6 12;
+    opacity: 0.4;
+    animation: circuitFlow 3.5s linear infinite;
+}
+
+.circuit__via {
+    fill: var(--color-secondary);
+    opacity: 0.3;
+}
+
+.circuit__chip {
+    fill: none;
+    stroke: var(--color-secondary);
+    stroke-width: 1.2;
+    opacity: 0.25;
+}
+
+.circuit__pulse {
+    fill: var(--color-secondary);
+    filter: drop-shadow(0 0 4px var(--color-secondary));
+}
+
+@keyframes circuitFlow {
+    to { stroke-dashoffset: -180; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .circuit__trace--flow,
+    .circuit__pulse {
+        animation: none;
+    }
+    .contact__panel-circuit animateMotion {
+        display: none;
+    }
+}
+
+.contact__container {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.contact__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 14px;
+}
+
+.contact__eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--color-primary);
+}
+
+.contact__heading {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 2.6vw, 2.5rem);
+    line-height: 1.18;
+    color: var(--color-text-main);
+    margin-bottom: 14px;
+}
+
+.contact__heading em {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.contact__lead {
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+    margin-bottom: 32px;
+}
+
+/* --- Main two-column container: info LEFT, form RIGHT ---
+   JSX order is info column then form panel, so this is a plain
+   left-to-right grid. `align-items: stretch` (the grid default) makes
+   both columns match the taller one's height, which is what lets the
+   form panel fill the space fully instead of leaving a gap above/below. */
+.contact__grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 48px;
+    align-items: stretch;
+}
+
+/* --- Left: form panel --- */
+.contact__panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--color-background-dark);
+    border-radius: var(--radius-md);
+    padding: 30px 34px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+/* Panel's own circuit-trace layer — sits behind the form (.contact__form
+   has z-index: 1) and fills whatever empty space is left above/below the
+   fields when the panel stretches to match the taller info column. */
+.contact__panel-circuit {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.contact__panel-circuit .circuit__trace {
+    stroke: rgba(255, 255, 255, 0.9);
+    opacity: 0.06;
+}
+
+.contact__panel-circuit .circuit__trace--flow {
+    stroke: var(--color-secondary);
+    opacity: 0.55;
+}
+
+.contact__panel-circuit .circuit__via {
+    opacity: 0.45;
+}
+
+.contact__panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 90px;
+    background: var(--color-primary);
+    opacity: 0.16;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+/* Slow "scanning" light bar across the top of the panel — a nod to
+   inspection/scanning stations on the shop floor. Subtle + slow on purpose. */
+.contact__panel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 55%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+    opacity: 0.55;
+    animation: contactScan 4.5s linear infinite;
+}
+
+@keyframes contactScan {
+    0% { left: -60%; }
+    100% { left: 110%; }
+}
+
+.contact__form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contact__field label {
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.contact__field input,
+.contact__field textarea {
+    font-family: var(--font-body);
+    font-size: 0.96rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    resize: vertical;
+    transition: border-color var(--transition-base), background-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.contact__field input::placeholder,
+.contact__field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.contact__field input:focus,
+.contact__field textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.22);
+    transform: translateY(-1px);
+}
+
+.contact__input--error {
+    border-color: #F87171 !important;
+    animation: contactShake 0.4s ease;
+}
+
+@keyframes contactShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+.contact__error {
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: #F87171;
+}
+
+.contact__submit {
+    position: relative;
+    align-self: flex-start;
+    min-width: 168px;
+    margin-top: 2px;
+    padding: 12px 30px;
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color var(--transition-base), transform var(--transition-base), opacity var(--transition-base), box-shadow var(--transition-base);
+}
+
+.contact__submit:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(47, 128, 237, 0.35);
+}
+
+.contact__submit:active:not(:disabled) {
+    transform: translateY(0) scale(0.97);
+}
+
+.contact__submit:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+/* Diagonal "shine" sweep on hover — shared by the quick-action buttons
+   and the submit button. */
+.contact__quick-btn::after,
+.contact__submit::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+    pointer-events: none;
+}
+
+.contact__quick-btn:hover::after,
+.contact__submit:hover:not(:disabled)::after {
+    left: 130%;
+}
+
+/* Three-dot "typing" loader shown while status === "submitting" */
+.contact__dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.contact__dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ffffff;
+    animation: contactDotBounce 1s infinite ease-in-out;
+}
+
+.contact__dots span:nth-child(2) { animation-delay: 0.15s; }
+.contact__dots span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes contactDotBounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+    40% { transform: translateY(-4px); opacity: 1; }
+}
+
+.contact__success {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: #6EE7B7;
+    transform-origin: left center;
+    animation: contactSuccessPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes contactSuccessPop {
+    0% { opacity: 0; transform: scale(0.85) translateY(6px); }
+    60% { opacity: 1; transform: scale(1.03) translateY(0); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --- Right: contact info column --- */
+.contact__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 26px;
+}
+
+.contact__info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 6px 8px;
+    margin: -6px -8px;
+    border-radius: var(--radius-sm);
+    cursor: default;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color var(--transition-base);
+}
+
+.contact__info-item:hover {
+    transform: translateX(6px);
+    background: rgba(47, 128, 237, 0.05);
+}
+
+.contact__info-icon {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(47, 128, 237, 0.10), rgba(96, 165, 250, 0.12));
+    box-shadow: inset 0 0 0 1px rgba(47, 128, 237, 0.10);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact__info-item:hover .contact__info-icon {
+    transform: scale(1.12) rotate(-8deg);
+    background: linear-gradient(135deg, rgba(47, 128, 237, 0.22), rgba(96, 165, 250, 0.24));
+    box-shadow: inset 0 0 0 1px rgba(47, 128, 237, 0.25), 0 6px 16px rgba(47, 128, 237, 0.2);
+}
+
+.contact__info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact__info-label {
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.contact__info-value {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.contact__info-link {
+    transition: color var(--transition-base);
+}
+
+.contact__info-link:hover {
+    color: var(--color-primary);
+}
+
+.contact__quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.contact__quick-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: var(--radius-md);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    overflow: hidden;
+    transition: transform var(--transition-base), background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.contact__quick-btn--outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-main);
+}
+
+.contact__quick-btn--outline:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary-hover);
+    transform: translateY(-2px);
+}
+
+.navbar__btn.contact__quick-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* --- Trust badges row --- */
+.contact__trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.contact__trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.contact__trust-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 22px rgba(47, 128, 237, 0.15);
+}
+
+/* --- Scroll reveal (shares timing with .intro__reveal / .quality__reveal) --- */
+.contact__reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.contact__reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact__reveal {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .contact__orb,
+    .contact__panel::after,
+    .contact__dots span {
+        animation: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .contact__grid {
+        gap: 36px;
+    }
+}
+
+@media (max-width: 900px) {
+    .contact {
+        padding: 56px 20px 64px;
+    }
+
+    .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .contact__panel {
+        padding: 30px 24px;
+    }
+}
+
+@media (max-width: 560px) {
+    .contact__row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+}
