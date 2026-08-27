@@ -15,8 +15,8 @@ function App() {
       <Hero />
       <Intro />
       <Capabilities />
-      <TechnicalStats />
       <CompanyAlbum/>
+      <TechnicalStats />
       <Quality />
       <Contact/>
       <Footer />

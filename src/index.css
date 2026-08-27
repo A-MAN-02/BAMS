@@ -728,7 +728,8 @@ button {
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    font-weight: 800;
     background: linear-gradient(90deg, #01172F, #0A6CBE);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; /* Text ko gradient color deta hai */
@@ -741,151 +742,165 @@ button {
 }
 
 /* =========================================
-   2. Modern Glassmorphism Cards
+   2. Bento Grid — mixed tile sizes, dark + pastel
    ========================================= */
-.cards-grid {
+.bento-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 124px;
+    grid-auto-flow: dense;
+    gap: 14px;
 }
 
-.card {
+/* Tile sizes */
+.bento--xl   { grid-column: span 2; grid-row: span 2; }
+.bento--tall { grid-column: span 1; grid-row: span 2; }
+.bento--wide { grid-column: span 2; grid-row: span 1; }
+.bento--sm   { grid-column: span 1; grid-row: span 1; }
+
+.bento-card {
     position: relative;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FBFCFE 100%);
-    backdrop-filter: blur(12px); /* Glass blur effect */
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(11, 31, 58, 0.07);
     border-radius: 18px;
-    padding: 34px 30px;
-    text-align: center;
+    padding: 20px;
     overflow: hidden;
-    box-shadow: 0 1px 2px rgba(11, 31, 58, 0.04), var(--shadow-md); /* Resting elevation so it doesn't look flat */
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
-    cursor: pointer;
-}
-
-/* Top accent bar that reveals on hover */
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-}
-
-.card:hover::before {
-    transform: scaleX(1);
-}
-
-.card__icon {
-    font-size: 2.1rem;
-    width: 68px;
-    height: 68px;
-    margin: 0 auto 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    background: linear-gradient(135deg, rgba(10, 108, 190, 0.10), rgba(22, 144, 192, 0.12));
-    box-shadow: inset 0 0 0 1px rgba(10, 108, 190, 0.10);
-    transition: transform 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+    box-shadow: 0 1px 2px rgba(11, 31, 58, 0.05);
 }
 
-.card h3 {
-    font-size: 1rem;
-    font-weight: 900;
-    color: var(--color-text-main);
-    /* margin-bottom: 10px; */
-    letter-spacing: 0px;
+.bento-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 36px rgba(11, 31, 58, 0.16);
 }
 
-.card p {
-    font-size: 1rem;
-    font-weight: 600;
-    /* line-height: 1.65; */
-    color: var(--color-text-main);
-}
-
-/* Hover Effect on Cards */
-.card:hover {
-    transform: translateY(-10px) scale(1.015); /* Card thoda upar uthega */
-    background: linear-gradient(180deg, #FFFFFF 0%, rgba(10, 108, 190, 0.035) 100%);
-    border-color: rgba(10, 108, 190, 0.4); /* Electric blue border on hover */
-    box-shadow: 0 22px 40px rgba(11, 31, 58, 0.14),
-                0 0 0 1px rgba(10, 108, 190, 0.12),
-                0 0 24px rgba(10, 108, 190, 0.18); /* Soft premium glow shadow */
-}
-
-.card:hover .card__icon {
-    transform: scale(1.12) rotate(5deg); /* Icon thoda bada aur tilt hoga */
-    background: linear-gradient(135deg, rgba(10, 108, 190, 0.22), rgba(22, 144, 192, 0.24));
-    box-shadow: inset 0 0 0 1px rgba(10, 108, 190, 0.25), 0 6px 16px rgba(10, 108, 190, 0.2);
-}
-
-/* =========================================
-   3. Animated Background Icons & Orbs
-   ========================================= */
-.bg-animated-icons {
+/* Faint product photo texture, sits behind the text */
+.bento-card__bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Cards ke peeche rahega */
-    pointer-events: none; /* Mouse clicks ko block nahi karega */
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.16;
+    z-index: 0;
 }
 
-/* Glowing Orbs */
-.glow-orb {
+.bento--dark .bento-card__bg {
+    mix-blend-mode: luminosity;
+    opacity: 0.22;
+}
+
+/* Small corner mark, echoes the reference layout's minimal glyph */
+.bento-card__mark {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
+    top: 20px;
+    right: 22px;
+    font-size: 1.4rem;
+    font-weight: 300;
     opacity: 0.4;
+    z-index: 1;
 }
 
-.orb-1 {
-    width: 300px;
-    height: 300px;
-    background: #0A6CBE;
-    top: -50px;
-    left: -100px;
-    animation: floatOrb 10s infinite alternate ease-in-out;
+.bento-card__body {
+    position: relative;
+    z-index: 1;
 }
 
-.orb-2 {
-    width: 250px;
-    height: 250px;
-    background: #1690C0;
-    bottom: -50px;
-    right: -50px;
-    animation: floatOrb 12s infinite alternate-reverse ease-in-out;
+.bento-card__title {
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 8px;
+    letter-spacing: -0.3px;
 }
 
-/* Floating Icons */
-.float-icon {
-    position: absolute;
-    font-size: 4rem;
-    opacity: 5; /* Bahut light dikhenge taaki disturb na karein */
+.bento-card__desc {
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.75;
+    margin: 0;
 }
 
-.icon-1 { top: 10%; left: 10%; animation: floatItem 8s infinite alternate ease-in-out; }
-.icon-2 { top: 10%; right: 15%; animation: floatItem 12s infinite alternate ease-in-out; }
-.icon-3 { bottom: 0%; left: 48%; animation: floatItem 10s infinite alternate ease-in-out; }
-
-/* Keyframe Animations */
-@keyframes floatOrb {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(50px, 50px) scale(1.2); }
+/* New extra sentence — hidden by default, revealed on hover */
+.bento-card__hover-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(8px);
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease, margin-top 0.35s ease;
 }
 
-@keyframes floatItem {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-30px) rotate(20deg); }
+.bento-card:hover .bento-card__hover-text {
+    opacity: 0.9;
+    transform: translateY(0);
+    max-height: 80px;
+    margin-top: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bento-card__hover-text {
+        transition: none;
+    }
+}
+
+/* Bigger title on the larger tiles, smaller on the compact one */
+.bento--xl .bento-card__title   { font-size: 2.2rem; }
+.bento--tall .bento-card__title,
+.bento--wide .bento-card__title { font-size: 1.5rem; }
+.bento--sm .bento-card__title   { font-size: 1.1rem; }
+.bento--sm .bento-card__desc    { font-size: 0.8rem; }
+
+/* Color themes — dark tiles + a distinct pastel per tile */
+.bento--dark {
+    background: #12161F;
+    color: #FFFFFF;
+}
+
+.bento--yellow {
+    background: #F4DE8B;
+    color: #4A3B00;
+}
+
+.bento--mint {
+    background: #CFE8D8;
+    color: #123422;
+}
+
+.bento--blue {
+    background: #D8E4F5;
+    color: #0C2C4E;
+}
+
+.bento--peach {
+    background: #F6D9C4;
+    color: #4A2410;
+}
+
+@media (max-width: 900px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .bento--xl { grid-column: span 2; }
+}
+
+@media (max-width: 640px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+    .bento--xl,
+    .bento--tall,
+    .bento--wide,
+    .bento--sm {
+        grid-column: span 1;
+        grid-row: span 1;
+        min-height: 180px;
+    }
+    .bento--xl .bento-card__title { font-size: 2rem; }
 }
 
 
