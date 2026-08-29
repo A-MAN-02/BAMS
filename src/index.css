@@ -1272,7 +1272,7 @@ button {
 ===================================== */
 .footer {
     background: var(--color-background-dark);
-    background-image: url('./assets/footerBg-JpCEy_uZ.png');
+    background-image: url('../assets/footerBg-JpCEy_uZ.png');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
