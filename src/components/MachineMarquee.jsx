@@ -4,13 +4,17 @@ const MachineMarquee = () => {
   // Apni "sir wali" naye images yahan daalne ke liye — bas src path change
   // kar do (ya isi filename se public/assets me overwrite kar do).
   const machines = [
-    { id: 1, src: './assets/small-machine.png', title: 'Pick & Place' },
-    { id: 2, src: './assets/advanced-smt-line.jpeg', title: 'SMT Line' },
-    { id: 3, src: './assets/pcb-baking-oven.jpeg', title: 'Baking Oven' },
-    { id: 4, src: './assets/bga-rework-station.jpeg', title: 'BGA Rework' },
-    { id: 5, src: './assets/machine-operation.jpeg', title: 'Line Operation' },
-    { id: 6, src: './assets/exhaust-system.jpeg', title: 'Exhaust System' },
-  ];
+    { id: 1, src: './assets/machine/3D AOI Machine.png', title: '3D AOI Machine' },
+     { id: 2, src: './assets/machine/Automatic Solder Paste Printer.png', title: 'Automatic Solder Paste Printer' },
+    { id: 3, src: './assets/machine/BGA Rework Station.png', title: 'BGA Rework Station' },
+    { id: 4, src: './assets/machine/High-Speed Pick & Place.png', title: 'High-Speed Pick & Place' },
+    { id: 5, src: './assets/machine/Lead-Free Reflow Oven.png', title: 'Lead-Free Reflow Oven' },
+    { id: 6, src: './assets/machine/PCB Baking Oven.png', title: 'PCB Baking Oven' },
+    { id: 7, src: './assets/machine/Precision Solder Paste Printer.png', title: 'Precision Solder Paste Printer' },
+    { id: 7, src: './assets/machine/Reflow Soldering Oven.png', title: 'Reflow Soldering Oven' },
+    { id: 7, src: './assets/machine/SMT Pick & Place Machine.png', title: 'SMT Pick & Place Machine' },
+    { id: 7, src: './assets/machine/X-Ray Inspection System.png', title: 'X-Ray Inspection System' },
+   ];
 
   // Seamless infinite loop ke liye list ko duplicate kar diya —
   // animation -50% tak jaati hai, jo exactly ek set ke barabar hai.
@@ -25,7 +29,7 @@ const MachineMarquee = () => {
             to { transform: translateX(-50%); }
           }
           .machine-track {
-            animation: machineScroll 25s linear infinite;
+            animation: machineScroll 65s linear infinite;
           }
           .machine-marquee-wrap:hover .machine-track {
             animation-play-state: paused;
@@ -67,8 +71,8 @@ const styles = {
   },
   item: {
     flex: '0 0 auto',
-    width: '220px',
-    height: '150px',
+    // width: '220px',
+    height: '250px',
     margin: '0 16px',
     borderRadius: '12px',
     overflow: 'hidden',
@@ -87,10 +91,11 @@ const styles = {
     left: 0,
     right: 0,
     padding: '8px 12px',
-    fontSize: '0.8rem',
-    fontWeight: 600,
-    color: '#fff',
-    background: 'linear-gradient(to top, rgba(0,0,0,0.65), transparent)',
+    fontSize: '1rem',
+    fontWeight: 700,
+    color: '#030303',
+    // background: 'linear-gradient(to top, rgba(252, 250, 250, 0.65), transparent)',
+    background: 'linear-gradient( rgba(44, 241, 244, 0.87) )',
   },
 };
 
