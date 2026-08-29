@@ -79,7 +79,7 @@ const Hero = () => {
         <h1>ELECTRONICS MANUFACTURING SERVICES</h1>
         <p>From Prototype to Production</p>
         <a href="#contact" className="navbar__btn">
-          Get a Quote
+          Work With Us
         </a>
       </div>
 
