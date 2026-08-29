@@ -5,6 +5,7 @@ import Capabilities from "./components/Capabilities";
 import TechnicalStats from "./components/TechnicalStats";
 import Quality from "./components/Quality";
 import CompanyAlbum from "./components/CompanyAlbum";
+import MachineMarquee from "./components/MachineMarquee";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -16,6 +17,7 @@ function App() {
       <Intro />
       <Capabilities />
       <CompanyAlbum/>
+      <MachineMarquee />
       <TechnicalStats />
       <Quality />
       <Contact/>

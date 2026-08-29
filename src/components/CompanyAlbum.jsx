@@ -45,7 +45,8 @@ const CompanyAlbum = () => {
     { id: 4, src: './assets/component-modules.jpeg', title: 'Component Modules' },
     { id: 5, src: './assets/precision-stencils.jpeg', title: 'Precision Stencils' },
     { id: 6, src: './assets/machine-operation.jpeg', title: 'Machine Operation' },
-    { id: 7, src: './assets/exhaust-system.jpeg', title: 'Conveyor & Exhaust System' }
+   /* { id: 7, src: './assets/exhaust-system.jpeg', title: 'Conveyor & Exhaust System' }
+   */
   ];
 
   return (
@@ -109,7 +110,7 @@ const CompanyAlbum = () => {
 // Modern Inline Styles (Sab kuch ek jagah)
 const styles = {
   section: { 
-    padding: '100px 5%', 
+    padding: '0px 5%', 
     backgroundColor: '#fcfcfd', // Thoda premium off-white color
     textAlign: 'center', 
     fontFamily: "'Inter', sans-serif" 
