@@ -1,42 +1,6 @@
 import { useRef, useState } from "react";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-// 1) Static content for the info column.
-//    Only edit the `value` (and phone/whatsapp numbers below) — everything
-//    else (layout, icons wrapper, hover states) is driven by the CSS.
-const CONTACT_DETAILS = [
-  {
-    icon: "📍",
-    label: "Facility Address",
-    value: "Plot No. __, Industrial Area, Delhi, India",
-  },
-  {
-    icon: "📞",
-    label: "Phone",
-    value: "+91 98765 00000",
-    href: "tel:+919876500000",
-  },
-  {
-    icon: "✉️",
-    label: "Email",
-    value: "info@yourcompany.com",
-    href: "mailto:info@yourcompany.com",
-  },
-  {
-    icon: "🕒",
-    label: "Working Hours",
-    value: "Mon – Sat, 9:30 AM – 6:30 PM",
-  },
-];
-
-// Small trust badges under the quick-action buttons — purely decorative,
-// but they also balance the info column height against the form panel.
-const TRUST_STATS = [
-  { icon: "⚡", label: "24h Response Time" },
-  { icon: "🔒", label: "NDA on Request" },
-  { icon: "🛠️", label: "Prototype to Volume" },
-];
-
 // 2) Tiny validator, no external library needed.
 const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
@@ -93,6 +57,44 @@ const Contact = () => {
 
   return (
     <section className="contact" id="contact" ref={containerRef}>
+      <style>
+        {`
+          .contact-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 64px;
+            flex-wrap: wrap;
+          }
+          .contact-flex__header {
+            flex: 1 1 420px;
+            max-width: 480px;
+            text-align: left;
+          }
+          .contact-flex__panel {
+            flex: 1 1 480px;
+            max-width: 560px;
+          }
+
+          /* Below ~900px there isn't room for two columns side by side,
+             so it stacks — header on top (centered), form below. */
+          @media (max-width: 900px) {
+            .contact-flex {
+              flex-direction: column;
+              gap: 40px;
+            }
+            .contact-flex__header {
+              text-align: center;
+              max-width: 600px;
+            }
+            .contact-flex__header .contact__lead {
+              margin-left: auto;
+              margin-right: auto;
+            }
+          }
+        `}
+      </style>
+
       {/* Decorative glow blob + floating orbs — purely visual background motion */}
       <div className="contact__glow"></div>
       <div className="contact__orb contact__orb--1"></div>
@@ -113,18 +115,9 @@ const Contact = () => {
       </svg>
 
       <div className="contact__container">
-        {/* Info column comes first in the JSX (matches the natural reading
-            order: eyebrow -> heading -> lead -> address/phone/email/hours ->
-            buttons -> badges), and the form panel comes second. On desktop
-            the grid places info on the LEFT and the form on the RIGHT; on
-            mobile it just stacks in this same order. Everything on the left
-            — heading, lead paragraph, list, buttons, badges — now lives
-            inside the SAME .contact__info container, so it all shares one
-            column width instead of the heading/lead spanning the full
-            section width above the grid. */}
-        <div className="contact__grid">
-          {/* ================= INFO COLUMN ================= */}
-          <div className="contact__info">
+        <div className="contact-flex">
+          {/* ================= HEADER (left on desktop, centered on mobile) ================= */}
+          <div className="contact-flex__header">
             <span className="contact__eyebrow contact__reveal">Get In Touch</span>
             <h2 className="contact__heading contact__reveal">
               Let's Build Your Next <em>Product</em> Together
@@ -134,57 +127,10 @@ const Contact = () => {
               our team will get back to you with a quote and lead time within one
               business day.
             </p>
-
-            {/* Each <li> carries its own "contact__reveal" class (instead of
-                one wrapper), so the scroll-reveal hook staggers them in
-                one-by-one rather than the whole list fading in together. */}
-            <ul className="contact__info-list">
-              {CONTACT_DETAILS.map((item) => (
-                <li className="contact__info-item contact__reveal" key={item.label}>
-                  <span className="contact__info-icon">{item.icon}</span>
-                  <div className="contact__info-text">
-                    <span className="contact__info-label">{item.label}</span>
-                    {item.href ? (
-                      <a className="contact__info-value contact__info-link" href={item.href}>
-                        {item.value}
-                      </a>
-                    ) : (
-                      <span className="contact__info-value">{item.value}</span>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            <div className="contact__quick-actions contact__reveal">
-              <a href="tel:+919876500000" className="navbar__btn contact__quick-btn">
-                📞 Call Now
-              </a>
-              <a
-                href="https://wa.me/919876500000"
-                target="_blank"
-                rel="noreferrer"
-                className="contact__quick-btn contact__quick-btn--outline"
-              >
-                🟢 WhatsApp Us
-              </a>
-            </div>
-
-            {/* Trust badges — fills the empty space under the buttons and
-                doubles as quick reassurance copy. */}
-            <ul className="contact__trust">
-              {TRUST_STATS.map((stat) => (
-                <li className="contact__trust-item contact__reveal" key={stat.label}>
-                  <span>{stat.icon}</span> {stat.label}
-                </li>
-              ))}
-            </ul>
           </div>
 
-          {/* ================= FORM PANEL ================= */}
-          {/* The dark card itself is NOT a reveal target (it should just be
-              there, framing the form) — only its rows/fields/button are, so
-              they cascade in individually once the card is on screen. */}
+          {/* ================= FORM PANEL (right on desktop, below on mobile) ================= */}
+          <div className="contact-flex__panel">
           <div className="contact__panel">
             {/* Decorative animated PCB-trace background — fills the empty
                 space above/below the (shorter) form so the tall panel never
@@ -318,6 +264,7 @@ const Contact = () => {
                 </p>
               )}
             </form>
+          </div>
           </div>
         </div>
       </div>
