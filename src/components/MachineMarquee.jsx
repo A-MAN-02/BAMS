@@ -50,8 +50,8 @@ const MachineMarquee = () => {
       </style>
 
       <div style={styles.textContainer}>
-        <span style={styles.eyebrow}>Our Machinery</span>
-        <h2 style={styles.heading}>Equipped With Precision Technology</h2>
+        {/* <span style={styles.eyebrow}>Our Machinery</span> */}
+        <h2 style={styles.heading}>Our Machinery</h2>
       </div>
 
       <div style={styles.wrap} className="machine-marquee-wrap">

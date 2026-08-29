@@ -13,8 +13,8 @@ const CONTACT_DETAILS = [
   {
     icon: "📞",
     label: "Phone",
-    value: "+91 98765 43210",
-    href: "tel:+919876543210",
+    value: "+91 98765 00000",
+    href: "tel:+919876500000",
   },
   {
     icon: "✉️",
@@ -157,11 +157,11 @@ const Contact = () => {
             </ul>
 
             <div className="contact__quick-actions contact__reveal">
-              <a href="tel:+919876543210" className="navbar__btn contact__quick-btn">
+              <a href="tel:+919876500000" className="navbar__btn contact__quick-btn">
                 📞 Call Now
               </a>
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919876500000"
                 target="_blank"
                 rel="noreferrer"
                 className="contact__quick-btn contact__quick-btn--outline"

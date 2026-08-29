@@ -73,6 +73,7 @@ const CompanyAlbum = () => {
 
       <div className="album-header" style={styles.textContainer}>
         <h2 style={styles.heading}>Inside Our Facility</h2>
+        <p style={styles.location}>📍 Hosahalli, Magadi Road, Bangalore, Karnataka</p>
         <p style={styles.paragraph}>
           We take immense pride in our state-of-the-art manufacturing infrastructure. 
           Equipped with high-speed SMT lines, precision BGA rework stations, and rigorous 
@@ -124,6 +125,13 @@ const styles = {
     color: '#111', 
     marginBottom: '20px', 
     fontWeight: '800' 
+  },
+  location: {
+    fontSize: '1rem',
+    fontWeight: '600',
+    color: '#0d3b8c',
+    letterSpacing: '0.3px',
+    marginBottom: '20px',
   },
   paragraph: { 
     fontSize: '1.15rem', 

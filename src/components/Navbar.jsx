@@ -86,7 +86,7 @@ const Navbar = () => {
                 className="navbar__btn navbar__btn--mobile"
                 onClick={(e) => handleAnchorClick(e, "#contact")}
               >
-                Work With Us
+                Get a Quote
               </a>
             </li>
           </ul>
@@ -99,7 +99,7 @@ const Navbar = () => {
             className="navbar__btn navbar__btn--desktop"
             onClick={(e) => handleAnchorClick(e, "#contact")}
           >
-            Work With Us
+            Get a Quote
           </a>
 
           <button
